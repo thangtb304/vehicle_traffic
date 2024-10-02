@@ -29,17 +29,19 @@ def non_max_suppression(boxes, threshold):
 
 def detect(pathVideo):
 
-    path_save=os.path.normpath(os.path.join(current_path, '..','static', 'save'))
-    relative_path = "../static/save/video"
+    #path_save=os.path.normpath(os.path.join(current_path, '..','static', 'save'))
+    relative_path = os.path.normpath(os.path.join(current_path, '..','static', 'save'))
 
     os.makedirs(os.path.join(path_save, 'video'), exist_ok=True)
 
     current_path=os.path.dirname(os.path.abspath(__file__))
     #link model traffic
-    model_traffic_name='model_traffic.pt'     
+    model_traffic_name='yolov8l.pt'     
+    ################model_traffic_name='model_traffic.pt'  
     model_traffic_path=os.path.normpath(os.path.join(current_path, '..','model', model_traffic_name))
     # link model plate
-    model_plate_name='model_plate.pt'     
+    model_plate_name='yolov8l.pt'    
+    ##############model_plate_name='model_plate.pt'   
     model_plate_path=os.path.normpath(os.path.join(current_path, '..','model', model_plate_name))
 
     # get model
@@ -107,6 +109,11 @@ def detect(pathVideo):
     return list_images, relative_path
 
 if __name__ == '__main__' :
-    pathVideo = "D:/TraficRedLight/ClientServer/static/videos/abcd.mp4"
-    path_save = "D:/TraficRedLight/ClientServer/static/save"
+    current_path=os.path.dirname(os.path.abspath(__file__))
+    name_video='video1.mp4'     
+    pathVideo=os.path.normpath(os.path.join(current_path, '..','video_source', name_video))
+    #pathVideo = "D:/TraficRedLight/ClientServer/static/videos/abcd.mp4"
+    #pathVideo=os.path.normpath(os.path.join(current_path, '..','static', 'videos'))
+    path_save=os.path.normpath(os.path.join(current_path, '..','static', 'save'))
     detect(pathVideo, path_save)
+
