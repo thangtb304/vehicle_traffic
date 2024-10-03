@@ -11,9 +11,7 @@ tracker = DeepSort()
 current_path=os.path.dirname(os.path.abspath(__file__))
 model_char_name='model_char.pt'     
 model_char_path=os.path.normpath(os.path.join(current_path, '..','model', model_char_name))
-
 model_char = YOLO(model_char_path)
-
 
 def get_label_traffic(label):
     if str(label) == '0':
